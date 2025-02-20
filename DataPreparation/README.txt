@@ -1,49 +1,29 @@
-STEP 1 - TASK CREATION
+# Folder Structure for Code Readability
+Overview
+First of all, we need to generate the folder structure that the code will be able to read. The folder and subfolder structure is as follows:
 
-1. Create a new folder for all the task files (ex. Task_FA)
-2. Make sure all the timestamp files are in the same folder and named correctly (ex. timestamp_M1_FA)
-3. Open Create_task_fear.m and RUN
-4. Select your first timestamp file
-5. Insert when asked the number of SECONDS for each period (example below):
-	Enter the durations (in seconds):
-	Hab: 300
-	Tone: 29
-	Shock: 1
-	ITI: 180
-	Durations saved as:
-  		durations = [300.00, 29.00, 1.00, 180.00];
-6. Save the created file with the name of the animal in the new folder (ex: Task_FA/task_M1_FA.m)
-7. Repeat for all animals.
+Main Folder
+Animal 1
+Subfolders
+Description: All sessions belonging to that animal.
+Naming Convention: Each folder name must follow the structure: month_day_year_test.
+Example: 7_6_2024_FR1
+Inside Each Subfolder:
+Session Recordings: There will be as many folders as there are calcium imaging videos recorded during that session.
+Naming Convention for Recording Folders: Each folder must be named using the format H(hour)_M(minute)_S(second).
+Example: H14_M53_S33
+Additional File: Inside each recording folder, include the text file from the behavioral software.
+Example: 2024-11-26_14h46m_Subject 6.txt
+Other Files: Within each recording folder, there will also be the ms file and a CSV file named TimeStamps.csv.
+Integrating the Folder Structure into Your Code
+Once the folder structure is set up, insert each of the subfolders of the main folder into the base_path variable in your code. For example:
 
-STEP 2 - ANIMAL CONFIGURATION
-
-1. Open GUI_SetAnimals.m and RUN
-2. Press Start
-3. Insert the number of Animals in your study
-4. Insert the number of Groups you have
-5. Press Set criteria 
-6. Insert the name of the first criteria (ex: sex) and press ENTER
-7. Insert the name of the second criteria (ex: treatment) and press ENTER and then Next
-8. Insert the number of groups you have in your first criteria and press ENTER
-9. Insert the number of groups you have in your second criteria and press ENTER and then Next
-10. Insert names for all your groups pressing ENTER each time then Continue
-11. Press Group animals
-12. For each animal select the groups and finish by pressing Save
-13. Press Save animal config
-14. Choose the name for your file and press ENTER
-15. Press Select the config destination and choose the location
-16. Press Save
-
-STEP 3 - Create Project
-
-1. Create a folder with all your ms files for every animal
-2. Rename all of the ms files with the same order you chose in your animal configuration file (ex: ms_M1_FA.m; ms_M2_FA.m;...)
-3. Open create_project_Mariana and RUN
-4. Select the folder containing the ms files
-5. Select the Animal configuration file
-6. Write your Trial type (for example FA or FE1)
-7. A window will open, select one by one the task files in order
-8. The file called Experiment.m will be saved in the ms folder
-
-NOTE: On the code (line 23) a color dictionary will be created. You can change the name of the variable if needed
-NOTE: Check if frame rate is correct RF
+base_paths = {...
+        'C:\Users\OneDrive\Documentos\Andero\Addiction\Nuevos animales noviembre\Carpetas ordenadas completas\Animal 13\11_25_2024_FR1',...
+        'C:\Users\OneDrive\Documentos\Andero\Addiction\Nuevos animales noviembre\Carpetas ordenadas completas\Animal 13\11_26_2024_FR1',...
+        'C:\Users\OneDrive\Documentos\Andero\Addiction\Nuevos animales noviembre\Carpetas ordenadas completas\Animal 13\11_27_2024_FR1',...
+        'C:\Users\OneDrive\Documentos\Andero\Addiction\Nuevos animales noviembre\Carpetas ordenadas completas\Animal 13\11_28_2024_FR1',...
+        'C:\Users\OneDrive\Documentos\Andero\Addiction\Nuevos animales noviembre\Carpetas ordenadas completas\Animal 13\11_29_2024_FR5',...
+        C:\Users\OneDrive\Documentos\Andero\Addiction\Nuevos animales noviembre\Carpetas ordenadas completas\Animal 13\12_02_2024_FR5'...
+       
+    };
